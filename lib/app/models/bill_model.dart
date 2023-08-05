@@ -54,6 +54,6 @@ class BillModel{
 
   @override
   String toString() {
-    return 'CompanyModel(id: $id, name: $name, createdAt: $createdAt)';
+    return 'BillModel(id: $id, name: $name, createdAt: $createdAt)';
   }
 }
