@@ -9,4 +9,6 @@ class AuthRepository{
     required this.httpManager,
     required this.appUtils
   });
+
+  
 }
