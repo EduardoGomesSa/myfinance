@@ -13,6 +13,8 @@ class AuthController extends GetxController{
   }
 
   Future signUp() async {
+    isLoading.value = true;
 
+    
   }
 }
