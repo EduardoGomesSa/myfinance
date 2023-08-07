@@ -3,7 +3,7 @@ import 'package:myfinance/app/core/utils/api_result.dart';
 import 'package:myfinance/app/core/utils/app_utils.dart';
 import 'package:myfinance/app/models/user_model.dart';
 
-import '../core/utils/Urls.dart';
+import '../core/utils/urls.dart';
 
 class AuthRepository{
   final HttpManager httpManager;

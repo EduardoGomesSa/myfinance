@@ -1,25 +1,53 @@
 import 'package:flutter/material.dart';
 import 'package:myfinance/app/core/config/app_colors.dart';
+import 'package:myfinance/app/pages/home/home_page.dart';
+import 'package:myfinance/app/pages/profile/profile_page.dart';
 
-class SplashPage extends StatelessWidget{
-  const SplashPage({Key? key}) : super(key: key);
+class BasePage extends StatefulWidget {
+  const BasePage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext buid){
-    return Material(
-      child: Container(
-        alignment: Alignment.center,
-        decoration: const BoxDecoration(color: AppColors.primary),
-        child: const Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            SizedBox(height: 10),
-            CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation(AppColors.primaryText),
-            )
+  State<BasePage> createState() => _BasePageState();
+}
+
+class _BasePageState extends State<BasePage>{
+  int currentIndex = 0;
+  final pageController = PageController();
+
+  @override
+  Widget build(BuildContext context){
+    return SafeArea(
+      child: Scaffold(
+        body: PageView(
+          physics: const NeverScrollableScrollPhysics(),
+          controller: pageController,
+          children: const [
+            HomePage(),
+            ProfilePage(),
           ],
         ),
-      ),
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: currentIndex,
+          onTap: (index) {
+            setState(() {
+              currentIndex = index;
+              pageController.jumpToPage(index);
+            });
+          },
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: AppColors.background,
+          selectedItemColor: AppColors.primaryText,
+          unselectedItemColor: AppColors.secundaryText,
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home_outlined),
+              label: "Home"),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.people_alt_outlined),
+              label: "Profile")
+          ],
+        ),
+      )
     );
   }
 }

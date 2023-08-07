@@ -5,12 +5,12 @@ class AuthController extends GetxController{
   RxBool isLoading = false.obs;
   UserModel user = UserModel();
 
-  @override
-  void onInit(){
-    super.onInit();
+  // @override
+  // void onInit(){
+  //   super.onInit();
 
 
-  }
+  // }
 
   Future signUp() async {
     isLoading.value = true;
