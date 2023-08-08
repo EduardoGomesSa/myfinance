@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myfinance/app/core/config/app_colors.dart';
 import 'package:myfinance/app/pages/home/home_page.dart';
+import 'package:myfinance/app/pages/income/income_form_page.dart';
 import 'package:myfinance/app/pages/profile/profile_page.dart';
 
 class BasePage extends StatefulWidget {
@@ -23,6 +24,7 @@ class _BasePageState extends State<BasePage>{
           controller: pageController,
           children: const [
             HomePage(),
+            IncomeFormPage(),
             ProfilePage(),
           ],
         ),
@@ -43,8 +45,11 @@ class _BasePageState extends State<BasePage>{
               icon: Icon(Icons.home_outlined),
               label: "Home"),
             BottomNavigationBarItem(
+              icon: Icon(Icons.add_card_outlined),
+              label: "Add Income"),
+            BottomNavigationBarItem(
               icon: Icon(Icons.people_alt_outlined),
-              label: "Profile")
+              label: "Profile"),
           ],
         ),
       )
