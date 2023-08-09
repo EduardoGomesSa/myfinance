@@ -31,7 +31,9 @@ class LoginPage extends StatelessWidget{
                 padding: EdgeInsets.all(29.0),
                 child: Form(
                   key: _formKey,
-                  child:
+                  child: Column(
+
+                  )
                 ),
               ),
             ],
