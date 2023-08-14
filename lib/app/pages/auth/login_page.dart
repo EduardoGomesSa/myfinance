@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import 'package:myfinance/app/core/config/app_colors.dart';
 import 'package:myfinance/app/core/services/validators.dart';
 import 'package:myfinance/app/core/widgets/text_field_widget.dart';
+
+import '../../controllers/auth_controller.dart';
 
 class LoginPage extends StatelessWidget{
   LoginPage({Key? key}) : super(key: key);
@@ -49,7 +53,40 @@ class LoginPage extends StatelessWidget{
                         controller: passwordTextController,
                         icon: Icons.password, 
                         label: 'Senha',
-                        validator: passwordValidator)
+                        validator: passwordValidator),
+
+                        SizedBox(
+                          height: 50,
+                          child: GetX<AuthController>(builder: (controller){
+                            return ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: AppColors.primary,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(9)
+                                )
+                              ),
+                              onPressed: controller.isLoading.value == true
+                                ? null
+                                : (){
+                                  FocusScope.of(context).unfocus();
+
+                                  if(_formKey.currentState!.validate()){
+                                    String email = emailTextController.text;
+                                    String password = passwordTextController.text;
+                                    controller.signIn(
+                                      email: email, password: password);
+                                  }
+                                },
+                              child: controller.isLoading.value == true
+                              ? const CircularProgressIndicator(
+                                backgroundColor: Colors.white)
+                                : const Text(
+                                  'Entrar',
+                                  style: TextStyle(fontSize: 16),
+                                ) 
+                              );
+                          }),
+                        )
                     ],
                   )
                 ),
