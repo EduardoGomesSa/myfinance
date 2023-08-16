@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:myfinance/app/core/config/app_colors.dart';
+import 'package:myfinance/app/core/routes/app_routes_pages.dart';
 import 'package:myfinance/app/core/services/validators.dart';
 import 'package:myfinance/app/core/widgets/text_field_widget.dart';
 
@@ -91,6 +92,28 @@ class LoginPage extends StatelessWidget{
                   )
                 ),
               ),
+
+              SizedBox(
+                height: 30,
+                child: OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18)
+                    )
+                  ),
+
+                  onPressed: (){
+                    Get.toNamed(AppRoutes.register);
+                  },
+
+                  child: const Text("Não possui uma conta? Crie uma agora mesmo",
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: AppColors.primaryText,
+                    decoration: TextDecoration.underline
+                  ),),
+                ),
+              )
             ],
           ),
         ),
