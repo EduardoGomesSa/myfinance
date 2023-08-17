@@ -76,6 +76,51 @@ class RegisterPage extends StatelessWidget{
                         isSecret: true,
                         validator: passwordValidator
                       ),
+
+                      SizedBox(
+                        height: 50,
+                        child: GetX<AuthController>(builder: (controller){
+                          return ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: AppColors.primary,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(9),
+                              )
+                            ),
+                            onPressed: controller.isLoading.value == true
+                              ? null
+                              : () {
+                                FocusScope.of(context).unfocus();
+
+                                if(_formKey.currentState!.validate()) {
+                                  _formKey.currentState!.save();
+
+                                  String password =
+                                    passwordTextController.text;
+                                  String passwordConfirmed = 
+                                    passwordConfirmedTextController.text;
+
+                                  if(password == passwordConfirmed){
+                                    controller.signUp();
+                                  }else {
+                                    controller.appUtils.showToast(
+                                      message: "Senha de confirmação está diferente!",
+                                      isError: true
+                                    );
+                                  }
+                                }
+                              }, 
+                            child: controller.isLoading.value == true 
+                              ? const CircularProgressIndicator(
+                                  backgroundColor: AppColors.primaryText,
+                              )
+                              : const Text(
+                                "Cadastrar",
+                                style: TextStyle(fontSize: 16),
+                              )
+                            );
+                        }),
+                      )
                     ]
                     
                   )
