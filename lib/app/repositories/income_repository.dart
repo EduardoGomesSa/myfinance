@@ -37,4 +37,29 @@ class IncomeRepository{
       return ApiResult<List<IncomeModel>>(message: message, isError: true);
     }
   }
+
+  Future<ApiResult<IncomeModel>> insert({required String token, required IncomeModel income}) async {
+    const String endpoint = "${Url.base}/incomes";
+
+    Map<String, dynamic> body = income.toMap();
+
+    final response = await httpManager.request(
+      url: endpoint, 
+      method: HttpMethods.post,
+      body: body,
+      headers: {
+        'Authorization': 'Bearer $token'
+      }
+    );
+
+    if(response['data'] != null){
+      IncomeModel income = IncomeModel.fromMap(response['data']);
+
+      return ApiResult<IncomeModel>(data: income);
+    } else {
+      String message = response['error'] ?? "Não foi possível registrar esse ganho. Tente novamente!";
+
+      return ApiResult<IncomeModel>(message: message, isError: true);
+    }
+  }
 }
