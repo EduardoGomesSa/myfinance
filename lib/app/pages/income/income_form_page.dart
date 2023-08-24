@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:myfinance/app/controllers/income_controller.dart';
 import 'package:myfinance/app/core/config/app_colors.dart';
 import 'package:myfinance/app/core/widgets/text_field_widget.dart';
 
@@ -36,6 +38,38 @@ class IncomeFormPage extends StatelessWidget{
                     ],
                   )
                 ),
+              ),
+
+              SizedBox(
+                height: 50,
+                child: GetX<IncomeController>(builder: (controller){
+                  return ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.primary,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(9),
+                      ),
+                    ),
+                    onPressed: controller.isLoading.value == true
+                      ? null 
+                      :() {
+                        FocusScope.of(context).unfocus();
+
+                        if(_formKey.currentState!.validate()){
+                          _formKey.currentState!.save();
+
+                          controller.post();
+                        }
+                      }, 
+                    child: controller.isLoading.value == true
+                      ? const CircularProgressIndicator(
+                        backgroundColor: Colors.white)
+                      : const Text(
+                        'Cadastrar',
+                        style: TextStyle(fontSize: 16),
+                      )
+                  );
+                }),
               )
             ],
           ),
