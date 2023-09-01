@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
+import 'package:myfinance/app/bindings/income_binding.dart';
 import 'package:myfinance/app/pages/auth/login_page.dart';
 import 'package:myfinance/app/pages/home/home_page.dart';
+import 'package:myfinance/app/pages/income/income_form_page.dart';
 import 'package:myfinance/app/pages/profile/profile_page.dart';
 import 'package:myfinance/app/pages/splash_page.dart';
 
@@ -10,7 +12,10 @@ abstract class AppPages{
   static final pages = <GetPage>[
     GetPage(
       name: AppRoutes.base, 
-      page: () => const BasePage()
+      page: () => const BasePage(),
+      bindings: [
+        IncomeBinding()
+      ]
     ),
     GetPage(
       name: AppRoutes.home, 
@@ -28,6 +33,10 @@ abstract class AppPages{
       name: AppRoutes.login, 
       page: () => LoginPage()
     ),
+    GetPage(
+      name: AppRoutes.addIncome, 
+      page: () => IncomeFormPage()
+    )
   ];
 }
 
@@ -38,4 +47,5 @@ abstract class AppRoutes {
   static const String register = '/register';
   static const String home = '/home';
   static const String profile = '/profile';
+  static const String addIncome = '/add_income';
 }
