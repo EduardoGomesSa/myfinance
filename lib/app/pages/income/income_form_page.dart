@@ -10,6 +10,8 @@ class IncomeFormPage extends StatelessWidget{
   final _formKey = GlobalKey<FormState>();
   final incomeTextController = TextEditingController();
 
+  final controllerIncome = Get.find<IncomeController>();
+
 
   @override
   Widget build(BuildContext context){
