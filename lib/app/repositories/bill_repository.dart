@@ -36,4 +36,8 @@ class BillRepository{
       return ApiResult<List<BillModel>>(message: message, isError: true);
     }
   }
+
+  Future<ApiResult<BillModel>> insert({required String token, required BillModel billModel}){
+    
+  }
 }
