@@ -1,6 +1,7 @@
 import 'package:myfinance/app/core/services/http_manager.dart';
 import 'package:myfinance/app/core/utils/api_result.dart';
 import 'package:myfinance/app/core/utils/app_utils.dart';
+import 'package:myfinance/app/core/utils/urls.dart';
 import 'package:myfinance/app/models/bill_model.dart';
 
 class BillRepository{
@@ -12,7 +13,27 @@ class BillRepository{
     required this.appUtils
   });
 
-  Future<ApiResult<List<BillModel>>> getAll() {
-    
+  Future<ApiResult<List<BillModel>>> getAll({required String token}) async {
+    const String endpoint = "${Url.base}/bills";
+
+    final response = await httpManager.request(
+      url: endpoint,
+      method: HttpMethods.get,
+      headers: {
+        'Authorization': 'Bearer $token',
+      }
+    );
+
+    if(response['data'] != null){
+      List list = response['data'];
+
+      List<BillModel> billList = BillModel.fromList(list);
+
+      return ApiResult<List<BillModel>>(data: billList);
+    } else {
+      String message = response['error'] ?? "Não foi possível buscar as contas. Tente novamente!";
+
+      return ApiResult<List<BillModel>>(message: message, isError: true);
+    }
   }
 }
