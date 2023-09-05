@@ -37,7 +37,28 @@ class BillRepository{
     }
   }
 
-  Future<ApiResult<BillModel>> insert({required String token, required BillModel billModel}){
-    
+  Future<ApiResult<BillModel>> insert({required String token, required BillModel bill}) async{
+    const String endpoint = "${Url.base}/bills";
+
+    Map<String, dynamic> body = bill.toMap();
+
+    final response = await httpManager.request(
+      url: endpoint, 
+      method: HttpMethods.post,
+      body: body,
+      headers: {
+        'Authorization': 'Bearer $token',
+      }
+    );
+
+    if(response['data'] != null){
+      BillModel billModel = BillModel.fromMap(response['data']);
+
+      return ApiResult<BillModel>(data: billModel);
+    } else {
+      String message = response['error'] ?? 'Não foi possível salvar a conta. Tente novamente!';
+
+      return ApiResult<BillModel>(message: message, isError: true);
+    }
   }
 }
