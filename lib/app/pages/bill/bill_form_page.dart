@@ -30,7 +30,10 @@ class BillFormPage extends StatelessWidget{
                     children: [
                       TextFieldWidget(
                         icon: Icons.title, 
-                        label: "Nome da conta")
+                        label: "Nome da conta"),
+                      TextFieldWidget(
+                        icon: Icons.numbers, 
+                        label: "Valor da conta")
                     ],
                   )
                 ),
