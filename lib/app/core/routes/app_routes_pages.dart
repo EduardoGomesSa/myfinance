@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:myfinance/app/bindings/app_binding.dart';
+import 'package:myfinance/app/bindings/bill_binding.dart';
 import 'package:myfinance/app/bindings/income_binding.dart';
 import 'package:myfinance/app/pages/auth/login_page.dart';
 import 'package:myfinance/app/pages/home/home_page.dart';
@@ -16,7 +17,8 @@ abstract class AppPages{
       page: () => const BasePage(),
       bindings: [
         AppBinding(),
-        IncomeBinding()
+        IncomeBinding(),
+        BillBinding(),
       ]
     ),
     GetPage(
