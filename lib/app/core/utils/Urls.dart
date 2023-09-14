@@ -1,4 +1,4 @@
 abstract class Url{
-  static const base = "http://127.0.0.1:8000/api";
-  static const login = "http://127.0.0.1:8000/login";
+  static const base = "http://192.168.2.99:8000/api";
+  static const login = "http://192.168.2.99:8000/login";
 }

@@ -8,6 +8,7 @@ import 'package:myfinance/app/pages/income/income_form_page.dart';
 import 'package:myfinance/app/pages/profile/profile_page.dart';
 import 'package:myfinance/app/pages/splash_page.dart';
 
+import '../../pages/auth/register_page.dart';
 import '../../pages/base_page.dart';
 
 abstract class AppPages{
@@ -36,6 +37,13 @@ abstract class AppPages{
     GetPage(
       name: AppRoutes.login, 
       page: () => LoginPage()
+    ),
+    GetPage(
+      name: AppRoutes.register, 
+      page: () => RegisterPage(),
+      bindings: [
+        AppBinding(),
+      ]
     ),
     GetPage(
       name: AppRoutes.addIncome, 

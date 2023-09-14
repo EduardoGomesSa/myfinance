@@ -5,6 +5,8 @@ import 'package:myfinance/app/core/config/app_colors.dart';
 import 'app/core/routes/app_routes_pages.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  
   runApp(const MyApp());
 }
 
