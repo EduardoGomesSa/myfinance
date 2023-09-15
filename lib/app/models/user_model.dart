@@ -34,7 +34,7 @@ class UserModel{
       name: map["name"],
       email: map["email"],
       password: map["password"],
-      createdAt: map["created_at"] != null ? DateTime.fromMillisecondsSinceEpoch(map["created_at"]) : null,
+      createdAt: map["createdAt"] != null ? DateTime.fromMillisecondsSinceEpoch(map["created_at"]) : null,
       token: map["token"]
     );
   }

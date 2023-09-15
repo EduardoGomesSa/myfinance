@@ -23,7 +23,7 @@ class BillModel{
     return BillModel(
       id: map["id"]?.toInt(),
       name: map["name"],
-      createdAt: map["created_at"] != null ? DateTime.fromMillisecondsSinceEpoch(map["created_at"]) : null
+      createdAt: map["createdAt"] != null ? DateTime.fromMillisecondsSinceEpoch(map["created_at"]) : null
     );
   }
 

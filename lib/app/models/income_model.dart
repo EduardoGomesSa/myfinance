@@ -27,7 +27,7 @@ class IncomeModel{
       id: map["id"]?.toInt(),
       value: map["value"]?.toNum(),
       remained: map["remained"]?.toNum(),
-      createdAt: map["created_at"] != null ? DateTime.fromMillisecondsSinceEpoch(map["created_at"]) : null,
+      createdAt: map["createdAt"] != null ? DateTime.fromMillisecondsSinceEpoch(map["created_at"]) : null,
     );
   }
 

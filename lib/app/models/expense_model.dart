@@ -34,7 +34,7 @@ class ExpenseModel{
       value: map["value"]?.toNum(),
       billModel: map["bill"] != null ? BillModel.fromMap(map["bill"]) : null,
       incomeModel: map["income"] != null ? IncomeModel.fromMap(map["income"]) : null,
-      createdAt: map["created_at"] != null ? DateTime.fromMillisecondsSinceEpoch(map["created_at"]) : null
+      createdAt: map["createdAt"] != null ? DateTime.fromMillisecondsSinceEpoch(map["created_at"]) : null
     );
   }
 
