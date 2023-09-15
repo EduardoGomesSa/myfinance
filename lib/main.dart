@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:myfinance/app/bindings/app_binding.dart';
 import 'package:myfinance/app/core/config/app_colors.dart';
 
 import 'app/core/routes/app_routes_pages.dart';
@@ -29,6 +30,8 @@ class MyApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
+      initialBinding: AppBinding(),
+      initialRoute: AppRoutes.splash,
       getPages: AppPages.pages,
     );
   }

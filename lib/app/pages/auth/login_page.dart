@@ -54,6 +54,7 @@ class LoginPage extends StatelessWidget{
                         controller: passwordTextController,
                         icon: Icons.password, 
                         label: 'Senha',
+                        isSecret: true,
                         validator: passwordValidator),
 
                         SizedBox(

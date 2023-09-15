@@ -41,9 +41,6 @@ abstract class AppPages{
     GetPage(
       name: AppRoutes.register, 
       page: () => RegisterPage(),
-      bindings: [
-        AppBinding(),
-      ]
     ),
     GetPage(
       name: AppRoutes.addIncome, 
