@@ -10,7 +10,7 @@ class IncomeFormPage extends StatelessWidget{
   final _formKey = GlobalKey<FormState>();
   final incomeTextController = TextEditingController();
 
-  final controllerIncome = Get.find<IncomeController>();
+  final controller = Get.find<IncomeController>();
 
 
   @override
@@ -36,7 +36,11 @@ class IncomeFormPage extends StatelessWidget{
                       TextFieldWidget(
                         controller: incomeTextController,
                         icon: Icons.money, 
-                        label: "Ganho"),
+                        label: "Ganho",
+                        onSaved: (value){
+                          int newValue = int.parse(value!); 
+                          controller.income.value = newValue;
+                        },),
 
                       const SizedBox(
                         height: 10,
