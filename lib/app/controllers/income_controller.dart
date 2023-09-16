@@ -24,6 +24,7 @@ class IncomeController extends GetxController{
     isLoading.value = true;
 
     String token = auth.user.token!;
+    income.user = auth.user;
 
     ApiResult<IncomeModel> result = await repository.insert(token: token, income: income);
 

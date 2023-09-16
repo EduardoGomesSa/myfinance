@@ -1,15 +1,19 @@
 import 'dart:convert';
 
+import 'package:myfinance/app/models/user_model.dart';
+
 class IncomeModel{
   int? id;
   num? value;
   num? remained;
+  UserModel? user;
   DateTime? createdAt;
 
   IncomeModel({
     this.id,
     this.value,
     this.remained,
+    this.user,
     this.createdAt
   });
 
@@ -18,6 +22,7 @@ class IncomeModel{
       "id": id,
       "value": value,
       "remained": remained,
+      "user_id": user!.id,
       "created_at": createdAt?.millisecondsSinceEpoch
     };
   }
@@ -25,8 +30,9 @@ class IncomeModel{
   factory IncomeModel.fromMap(Map<String, dynamic> map){
     return IncomeModel(
       id: map["id"]?.toInt(),
-      value: map["value"]?.toNum(),
+      value: map["value"]?.toInt(),
       remained: map["remained"]?.toNum(),
+      user: map["user"],
       createdAt: map["createdAt"] != null ? DateTime.fromMillisecondsSinceEpoch(map["created_at"]) : null,
     );
   }
@@ -47,6 +53,7 @@ class IncomeModel{
       other.id == id &&
       other.value == value &&
       other.remained == remained &&
+      other.user == user &&
       other.createdAt == createdAt;
   }
 
@@ -55,6 +62,7 @@ class IncomeModel{
     return id.hashCode ^
       value.hashCode ^
       remained.hashCode ^
+      user.hashCode ^
       createdAt.hashCode;
   }
 
