@@ -4,6 +4,7 @@ import 'package:myfinance/app/core/routes/app_routes_pages.dart';
 import 'package:myfinance/app/core/utils/api_result.dart';
 import 'package:myfinance/app/core/utils/app_utils.dart';
 import 'package:myfinance/app/models/bill_model.dart';
+import 'package:myfinance/app/models/expense_model.dart';
 import 'package:myfinance/app/repositories/bill_repository.dart';
 
 class BillController extends GetxController{
@@ -19,6 +20,7 @@ class BillController extends GetxController{
 
   RxBool isLoading = false.obs;
   BillModel bill = BillModel();
+  ExpenseModel expense = ExpenseModel();
 
   Future post() async {
     isLoading.value = true;
