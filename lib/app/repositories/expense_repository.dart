@@ -36,4 +36,29 @@ class ExpenseRepository{
       return ApiResult<List<ExpenseModel>>(message: message, isError: true);
     }
   }
+
+  Future<ApiResult<ExpenseModel>> insert({required String token, required ExpenseModel expense}) async{
+    const String endpoint = "${Url.base}/expenses";
+
+    Map<String, dynamic> body = expense.toMap();
+
+    final response = await httpManager.request(
+      url: endpoint, 
+      method: HttpMethods.post,
+      body: body,
+      headers: {
+        'Authorization': 'Bearer $token',
+      }
+    );
+
+    if(response['data'] != null){
+      ExpenseModel expense = ExpenseModel.fromMap(response['data']);
+
+      return ApiResult<ExpenseModel>(data: expense);
+    } else {
+      String message = response['data'] ?? 'Não foi possível cadastrar o gasto. Tente novamente!';
+
+      return ApiResult<ExpenseModel>(message: message, isError: true);
+    }
+  }
 }
