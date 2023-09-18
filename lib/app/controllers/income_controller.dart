@@ -19,6 +19,7 @@ class IncomeController extends GetxController{
 
   RxBool isLoading = false.obs;
   IncomeModel income = IncomeModel();
+  RxList<IncomeModel> listIncome = RxList<IncomeModel>([]); 
 
   Future post() async {
     isLoading.value = true;
@@ -35,6 +36,22 @@ class IncomeController extends GetxController{
 
       Get.offAllNamed(AppRoutes.base);
     } else {
+      appUtils.showToast(message: result.message!, isError: true);
+    }
+
+    isLoading.value = false;
+  }
+
+  Future getIncomes() async {
+    isLoading.value = true;
+
+    String token = auth.user.token!;
+
+    ApiResult<List<IncomeModel>> result = await repository.getAll(token: token);
+
+    if(!result.isError){
+      listIncome.assignAll(result.data!);
+    }else {
       appUtils.showToast(message: result.message!, isError: true);
     }
 
