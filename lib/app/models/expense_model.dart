@@ -6,15 +6,15 @@ import 'package:myfinance/app/models/income_model.dart';
 class ExpenseModel{
   int? id;
   num? value;
-  BillModel? billModel;
-  IncomeModel? incomeModel;
+  BillModel? bill;
+  IncomeModel? income;
   DateTime? createdAt;
 
   ExpenseModel({
     this.id,
     this.value,
-    this.billModel,
-    this.incomeModel,
+    this.bill,
+    this.income,
     this.createdAt
   });
 
@@ -22,8 +22,8 @@ class ExpenseModel{
     return {
       "id": id,
       "value": value,
-      "bill_id": billModel?.id,
-      "income_id": incomeModel,
+      "bill_id": bill?.id,
+      "income_id": income,
       "created_at": createdAt?.millisecondsSinceEpoch
     };
   }
@@ -32,8 +32,8 @@ class ExpenseModel{
     return ExpenseModel(
       id: map["id"]?.toInt(),
       value: map["value"]?.toNum(),
-      billModel: map["bill"] != null ? BillModel.fromMap(map["bill"]) : null,
-      incomeModel: map["income"] != null ? IncomeModel.fromMap(map["income"]) : null,
+      bill: map["bill"] != null ? BillModel.fromMap(map["bill"]) : null,
+      income: map["income"] != null ? IncomeModel.fromMap(map["income"]) : null,
       createdAt: map["createdAt"] != null ? DateTime.fromMillisecondsSinceEpoch(map["created_at"]) : null
     );
   }
@@ -53,8 +53,8 @@ class ExpenseModel{
     return 
       other.id == id &&
       other.value == value &&
-      other.billModel == billModel &&
-      other.incomeModel == incomeModel &&
+      other.bill == bill &&
+      other.income == income &&
       other.createdAt == createdAt;
   }
 
@@ -62,8 +62,8 @@ class ExpenseModel{
   int get hashCode {
     return id.hashCode ^
       value.hashCode ^
-      incomeModel.hashCode ^
-      billModel.hashCode ^
+      income.hashCode ^
+      bill.hashCode ^
       createdAt.hashCode;
   }
 

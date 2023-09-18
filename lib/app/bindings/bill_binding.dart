@@ -6,6 +6,12 @@ class BillBinding extends Bindings{
   @override
   void dependencies(){
     Get.put(BillRepository(httpManager: Get.find(), appUtils: Get.find()));
-    Get.put(BillController(auth: Get.find(), repository: Get.find(), appUtils: Get.find()));
+    Get.put(BillController(
+      auth: Get.find(), 
+      incomeController: Get.find(), 
+      repository: Get.find(), 
+      expenseRepository: Get.find(), 
+      appUtils: Get.find())
+    );
   }
 }

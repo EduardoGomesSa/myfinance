@@ -34,12 +34,24 @@ class BillFormPage extends StatelessWidget{
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      const TextFieldWidget(
+                      TextFieldWidget(
+                        controller: billTextController,
                         icon: Icons.title, 
-                        label: "Nome da conta"),
-                      const TextFieldWidget(
+                        label: "Nome da conta",
+                        onSaved: (value){
+                          controllerBill.bill.name = value;
+                        },
+                      ),
+                      TextFieldWidget(
+                        controller: expenseTextController,
                         icon: Icons.numbers, 
-                        label: "Valor da conta"),
+                        label: "Valor da conta",
+                        onSaved: (value){
+                          int newValue = int.parse(value!);
+                          
+                          controllerBill.expense.value = newValue;
+                        },
+                      ),
 
                       const SizedBox(
                         height: 10,
