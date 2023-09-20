@@ -26,7 +26,10 @@ abstract class AppPages{
     ),
     GetPage(
       name: AppRoutes.home, 
-      page: () => const HomePage()
+      page: () => HomePage(),
+      bindings: [
+        IncomeBinding(),
+      ]
     ),
     GetPage(
       name: AppRoutes.splash, 
