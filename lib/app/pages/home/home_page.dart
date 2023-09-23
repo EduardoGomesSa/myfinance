@@ -5,7 +5,7 @@ import 'package:myfinance/app/core/widgets/income_widget.dart';
 import 'package:myfinance/app/models/income_model.dart';
 
 class HomePage extends StatelessWidget{
-  HomePage({Key? key}) : super(key: key);
+  HomePage({super.key});
 
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey = GlobalKey<RefreshIndicatorState>();
   final IncomeController controller = Get.find();

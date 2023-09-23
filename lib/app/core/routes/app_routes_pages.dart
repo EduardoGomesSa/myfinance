@@ -27,9 +27,6 @@ abstract class AppPages{
     GetPage(
       name: AppRoutes.home, 
       page: () => HomePage(),
-      bindings: [
-        IncomeBinding(),
-      ]
     ),
     GetPage(
       name: AppRoutes.splash, 

@@ -17,6 +17,13 @@ class IncomeController extends GetxController{
     required this.appUtils
   });
 
+  @override
+  void onInit(){
+    super.onInit();
+
+    getIncomes();
+  }
+
   RxBool isLoading = false.obs;
   IncomeModel income = IncomeModel();
   RxList<IncomeModel> listIncome = RxList<IncomeModel>([]); 
@@ -45,9 +52,9 @@ class IncomeController extends GetxController{
   Future getIncomes() async {
     isLoading.value = true;
 
-    String token = auth.user.token!;
+    //String token = auth.user.token!;
 
-    ApiResult<List<IncomeModel>> result = await repository.getAll(token: token);
+    ApiResult<List<IncomeModel>> result = await repository.getAll(auth.user.token!);
 
     if(!result.isError){
       listIncome.assignAll(result.data!);

@@ -14,7 +14,7 @@ class IncomeRepository{
     required this.appUtils
   });
 
-  Future<ApiResult<List<IncomeModel>>> getAll({required String token}) async {
+  Future<ApiResult<List<IncomeModel>>> getAll(String token) async {
     const String endpoint = "${Url.base}/incomes";
 
     final response = await httpManager.request(
