@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myfinance/app/core/config/app_colors.dart';
 import 'package:myfinance/app/models/income_model.dart';
 
 class IncomeInfoPage extends StatelessWidget{
@@ -10,8 +11,22 @@ class IncomeInfoPage extends StatelessWidget{
 
   @override
   Widget build(BuildContext context){
+    final size = MediaQuery.of(context).size;
+
     return Scaffold(
-      body: Text("Tela com informações sobre os Incomes ${income.value}"),
+      appBar: AppBar(),
+      backgroundColor: AppColors.background,
+      body: SingleChildScrollView(
+        child: SizedBox(
+          height: size.height,
+          width: size.width,
+          child: Column(
+           children: [
+            
+           ], 
+          )
+        )
+      ),
     );
   }
 }
