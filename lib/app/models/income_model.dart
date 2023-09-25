@@ -5,6 +5,7 @@ import 'package:myfinance/app/models/user_model.dart';
 class IncomeModel{
   int? id;
   num? value;
+  String? description;
   num? remained;
   UserModel? user;
   DateTime? createdAt;
@@ -12,6 +13,7 @@ class IncomeModel{
   IncomeModel({
     this.id,
     this.value,
+    this.description,
     this.remained,
     this.user,
     this.createdAt
@@ -21,6 +23,7 @@ class IncomeModel{
     return {
       "id": id,
       "value": value,
+      "description": description,
       "remained": remained,
       "user_id": user!.id,
       "created_at": createdAt?.millisecondsSinceEpoch
@@ -31,6 +34,7 @@ class IncomeModel{
     return IncomeModel(
       id: map["id"]?.toInt(),
       value: map["value"]?.toInt(),
+      description: map["description"],
       remained: map["remained"]?.toNum(),
       user: map["user"],
       createdAt: map["createdAt"] != null ? DateTime.fromMillisecondsSinceEpoch(map["created_at"]) : null,
@@ -52,6 +56,7 @@ class IncomeModel{
     return 
       other.id == id &&
       other.value == value &&
+      other.description == description &&
       other.remained == remained &&
       other.user == user &&
       other.createdAt == createdAt;
@@ -61,6 +66,7 @@ class IncomeModel{
   int get hashCode {
     return id.hashCode ^
       value.hashCode ^
+      description.hashCode ^
       remained.hashCode ^
       user.hashCode ^
       createdAt.hashCode;
@@ -68,6 +74,6 @@ class IncomeModel{
 
   @override
   String toString() {
-    return 'IncomeModel(id: $id, value: $value, remained: $remained, createdAt: $createdAt)';
+    return 'IncomeModel(id: $id, value: $value, description: $description, remained: $remained, createdAt: $createdAt)';
   }
 }
