@@ -7,7 +7,7 @@ class IncomeInfoPage extends StatelessWidget{
 
   final IncomeModel income;
 
-  final _formKey = GlobalKey<FormState>();
+  //final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context){
