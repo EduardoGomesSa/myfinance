@@ -3,7 +3,7 @@ import 'package:myfinance/app/core/config/app_colors.dart';
 import 'package:myfinance/app/models/income_model.dart';
 
 class IncomeInfoPage extends StatelessWidget{
-  IncomeInfoPage({Key? key, required this.income}) : super(key: key);
+  const IncomeInfoPage({Key? key, required this.income}) : super(key: key);
 
   final IncomeModel income;
 
