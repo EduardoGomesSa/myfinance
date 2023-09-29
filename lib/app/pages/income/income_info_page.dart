@@ -20,9 +20,14 @@ class IncomeInfoPage extends StatelessWidget{
         child: SizedBox(
           height: size.height,
           width: size.width,
-          child: const Column(
+          child: Column(
            children: [
-            Text("Aqui ficará um botão")
+            Text(
+              "${income.description}",
+              style: const TextStyle(
+                fontSize: 24, color: AppColors.primaryText
+              ),
+            )
            ], 
           )
         )
