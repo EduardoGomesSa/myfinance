@@ -27,6 +27,28 @@ class IncomeInfoPage extends StatelessWidget{
               style: const TextStyle(
                 fontSize: 24, color: AppColors.primaryText
               ),
+            ),
+
+            const SizedBox(height: 30),
+
+            Container(
+              width: 130,
+              height: 80,
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              decoration: BoxDecoration(
+                color: AppColors.backgroundComponent,
+                borderRadius: BorderRadius.circular(12) 
+              ),
+              child: const Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    
+                  )
+                ],
+              ),
             )
            ], 
           )
