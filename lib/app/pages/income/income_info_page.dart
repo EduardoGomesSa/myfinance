@@ -39,14 +39,58 @@ class IncomeInfoPage extends StatelessWidget{
                 color: AppColors.backgroundComponent,
                 borderRadius: BorderRadius.circular(12) 
               ),
-              child: const Column(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Row(
+                  const Row(
+                    //crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
-                    
-                  )
+                    children: [
+                      Text(
+                        "Valor",
+                        style: TextStyle(
+                          fontSize: 16,
+                          color:AppColors.secundaryText),
+                      ),           
+                    ],
+                  ),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "${income.value}",
+                          style: const TextStyle(
+                            fontSize: 20,
+                            color: AppColors.primaryText
+                          ),
+                        )
+                      ]
+                    ),
+                    const Row(
+                    //crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Restante",
+                        style: TextStyle(
+                          fontSize: 15,
+                          color:AppColors.secundaryText),
+                      ),           
+                    ],
+                  ),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "${income.remained}",
+                          style: const TextStyle(
+                            fontSize: 16,
+                            color: AppColors.primaryText
+                          ),
+                        )
+                      ]
+                    )        
                 ],
               ),
             )
