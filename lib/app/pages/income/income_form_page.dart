@@ -8,7 +8,8 @@ class IncomeFormPage extends StatelessWidget{
   IncomeFormPage({Key? key}) : super(key: key);
 
   final _formKey = GlobalKey<FormState>();
-  final incomeTextController = TextEditingController();
+  final incomeValueTextController = TextEditingController();
+  final incomeTitleTextController = TextEditingController();
 
   final controller = Get.find<IncomeController>();
 
@@ -34,7 +35,15 @@ class IncomeFormPage extends StatelessWidget{
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       TextFieldWidget(
-                        controller: incomeTextController,
+                        controller: incomeTitleTextController,
+                        icon: Icons.title, 
+                        label: "Título",
+                        onSaved: (value){
+                          controller.income.title = value;
+                        },),
+
+                      TextFieldWidget(
+                        controller: incomeValueTextController,
                         icon: Icons.money, 
                         label: "Ganho",
                         onSaved: (value){

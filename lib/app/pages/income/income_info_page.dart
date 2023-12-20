@@ -23,7 +23,7 @@ class IncomeInfoPage extends StatelessWidget{
           child: Column(
            children: [
             Text(
-              "${income.description}",
+              "${income.title}",
               style: const TextStyle(
                 fontSize: 24, color: AppColors.primaryText
               ),

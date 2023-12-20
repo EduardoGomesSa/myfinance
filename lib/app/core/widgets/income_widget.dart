@@ -38,6 +38,14 @@ class IncomeWidget extends StatelessWidget{
                 children: [
                   const SizedBox(height: 4),
                   Text(
+                    "${model.title}",
+                    style: const TextStyle(
+                      fontSize: 14, color: AppColors.primaryText
+                    ),
+                  ),
+
+                  const SizedBox(height: 4),
+                  Text(
                     "${model.value}",
                     style: const TextStyle(
                       fontSize: 14, color: AppColors.primaryText
