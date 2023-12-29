@@ -26,7 +26,7 @@ class _BasePageState extends State<BasePage>{
           children: [
             HomePage(),
             IncomeFormPage(),
-            BillFormPage(),
+            //BillFormPage(),
             const ProfilePage(),
           ],
         ),

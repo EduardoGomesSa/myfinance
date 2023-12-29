@@ -3,13 +3,15 @@ import 'package:get/get.dart';
 import 'package:myfinance/app/controllers/bill_controller.dart';
 import 'package:myfinance/app/core/config/app_colors.dart';
 import 'package:myfinance/app/core/widgets/text_field_widget.dart';
+import 'package:myfinance/app/models/income_model.dart';
 
 class BillFormPage extends StatelessWidget{
-  BillFormPage({Key? key}) : super(key: key);
+  BillFormPage({Key? key, required this.incomeModel}) : super(key: key);
 
   final _formKey = GlobalKey<FormState>();
   final billTextController = TextEditingController();
   final expenseTextController = TextEditingController();
+  final IncomeModel incomeModel;
 
   final controllerBill = Get.find<BillController>(); 
 
@@ -75,6 +77,7 @@ class BillFormPage extends StatelessWidget{
                                 if(_formKey.currentState!.validate()){
                                   _formKey.currentState!.save();
 
+                                  controller.expense.income = incomeModel;
                                   controller.post();
                                 }
                               }, 

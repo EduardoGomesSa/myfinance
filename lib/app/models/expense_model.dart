@@ -23,7 +23,7 @@ class ExpenseModel{
       "id": id,
       "value": value,
       "bill_id": bill?.id,
-      "income_id": income,
+      "income_id": income?.id,
       "created_at": createdAt?.millisecondsSinceEpoch
     };
   }
@@ -31,7 +31,7 @@ class ExpenseModel{
   factory ExpenseModel.fromMap(Map<String, dynamic> map){
     return ExpenseModel(
       id: map["id"]?.toInt(),
-      value: map["value"]?.toNum(),
+      value: map["value"] != null ? map['value'] as int : null,
       bill: map["bill"] != null ? BillModel.fromMap(map["bill"]) : null,
       income: map["income"] != null ? IncomeModel.fromMap(map["income"]) : null,
       createdAt: map["createdAt"] != null ? DateTime.fromMillisecondsSinceEpoch(map["created_at"]) : null

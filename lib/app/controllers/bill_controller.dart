@@ -39,7 +39,7 @@ class BillController extends GetxController{
       bill = result.data!;
 
       expense.bill = bill;
-      expense.income = incomeController.income;
+      //expense.income = incomeController.income;
 
       ApiResult<ExpenseModel> resultExpense = await expenseRepository.insert(token: token, expense: expense);
 

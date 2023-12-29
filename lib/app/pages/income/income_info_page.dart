@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:myfinance/app/core/config/app_colors.dart';
 import 'package:myfinance/app/models/income_model.dart';
 
+import '../bill/bill_form_page.dart';
+
 class IncomeInfoPage extends StatelessWidget{
   const IncomeInfoPage({Key? key, required this.income}) : super(key: key);
 
@@ -90,9 +92,49 @@ class IncomeInfoPage extends StatelessWidget{
                           ),
                         )
                       ]
-                    )        
+                    ),
                 ],
               ),
+            ),
+
+            Column(
+              children: [
+                const SizedBox(
+                  height: 10,
+                ),
+                SizedBox(
+                  height: 50,
+                  child: InkWell(
+                    // onTap: () {
+                    //   FocusScope.of(context).unfocus();
+                    //   Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(builder: (context) => BillFormPage()),
+                    //   );
+                    // },
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.primary,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(9),
+                        ),
+                      ),
+                      onPressed: () {
+                        FocusScope.of(context).unfocus();
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => BillFormPage(incomeModel: income,)),
+                        );
+                        // Opcional: Adicione mais lógica de manipulação de pressionamento de botão, se necessário
+                      },
+                      child: const Text(
+                        "Adicionar conta",
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             )
            ], 
           )
