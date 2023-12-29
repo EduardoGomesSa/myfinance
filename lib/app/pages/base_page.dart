@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:myfinance/app/core/config/app_colors.dart';
-import 'package:myfinance/app/pages/bill/bill_form_page.dart';
 import 'package:myfinance/app/pages/home/home_page.dart';
 import 'package:myfinance/app/pages/income/income_form_page.dart';
 import 'package:myfinance/app/pages/profile/profile_page.dart';
@@ -26,7 +25,6 @@ class _BasePageState extends State<BasePage>{
           children: [
             HomePage(),
             IncomeFormPage(),
-            //BillFormPage(),
             const ProfilePage(),
           ],
         ),
@@ -49,9 +47,6 @@ class _BasePageState extends State<BasePage>{
             BottomNavigationBarItem(
               icon: Icon(Icons.add_card_outlined),
               label: "Add Income"),
-             BottomNavigationBarItem(
-              icon: Icon(Icons.add_card_outlined),
-              label: "Add Bill"),
             BottomNavigationBarItem(
               icon: Icon(Icons.people_alt_outlined),
               label: "Profile"),
