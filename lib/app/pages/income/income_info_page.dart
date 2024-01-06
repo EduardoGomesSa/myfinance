@@ -105,13 +105,6 @@ class IncomeInfoPage extends StatelessWidget{
                 SizedBox(
                   height: 50,
                   child: InkWell(
-                    // onTap: () {
-                    //   FocusScope.of(context).unfocus();
-                    //   Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(builder: (context) => BillFormPage()),
-                    //   );
-                    // },
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.primary,
@@ -125,7 +118,6 @@ class IncomeInfoPage extends StatelessWidget{
                           context,
                           MaterialPageRoute(builder: (context) => BillFormPage(incomeModel: income,)),
                         );
-                        // Opcional: Adicione mais lógica de manipulação de pressionamento de botão, se necessário
                       },
                       child: const Text(
                         "Adicionar conta",

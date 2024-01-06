@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:myfinance/app/models/expense_model.dart';
 import 'package:myfinance/app/models/user_model.dart';
 
 class IncomeModel{
@@ -9,6 +10,7 @@ class IncomeModel{
   num? remained;
   UserModel? user;
   DateTime? createdAt;
+  List<ExpenseModel>? expenses;
 
   IncomeModel({
     this.id,
@@ -16,7 +18,8 @@ class IncomeModel{
     this.title,
     this.remained,
     this.user,
-    this.createdAt
+    this.createdAt,
+    this.expenses
   });
 
   Map<String, dynamic> toMap(){
@@ -26,7 +29,8 @@ class IncomeModel{
       "title": title,
       "remained": remained,
       "user_id": user!.id,
-      "created_at": createdAt?.millisecondsSinceEpoch
+      "created_at": createdAt?.millisecondsSinceEpoch,
+      "expenses": expenses?.map((x) => x.toMap()).toList()
     };
   }
 
@@ -35,9 +39,14 @@ class IncomeModel{
       id: map["id"]?.toInt(),
       value: map["value"]?.toInt(),
       title: map["title"],
-      remained: map["remained"]?.toNum(),
+      remained: map["remained"]?.toInt(),
       user: map["user"],
       createdAt: map["createdAt"] != null ? DateTime.fromMillisecondsSinceEpoch(map["created_at"]) : null,
+      expenses: map["expenses"] != null ? List<ExpenseModel>
+        .from((map['expenses'] as List<dynamic>)
+        .map<ExpenseModel?>((x) => ExpenseModel
+        .fromMap(x as Map<String, dynamic>))) 
+        : null
     );
   }
 
