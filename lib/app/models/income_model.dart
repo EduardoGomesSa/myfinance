@@ -9,7 +9,7 @@ class IncomeModel{
   String? title;
   num? remained;
   UserModel? user;
-  DateTime? createdAt;
+  DateTime? created;
   List<ExpenseModel>? expenses;
 
   IncomeModel({
@@ -18,7 +18,7 @@ class IncomeModel{
     this.title,
     this.remained,
     this.user,
-    this.createdAt,
+    this.created,
     this.expenses
   });
 
@@ -29,7 +29,7 @@ class IncomeModel{
       "title": title,
       "remained": remained,
       "user_id": user!.id,
-      "created_at": createdAt?.millisecondsSinceEpoch,
+      "created": created?.millisecondsSinceEpoch,
       "expenses": expenses?.map((x) => x.toMap()).toList()
     };
   }
@@ -41,7 +41,7 @@ class IncomeModel{
       title: map["title"],
       remained: map["remained"]?.toInt(),
       user: map["user"],
-      createdAt: map["createdAt"] != null ? DateTime.fromMillisecondsSinceEpoch(map["created_at"]) : null,
+      created: map["created"] != null ? DateTime.parse(map["created"]) : null,
       expenses: map["expenses"] != null ? List<ExpenseModel>
         .from((map['expenses'] as List<dynamic>)
         .map<ExpenseModel?>((x) => ExpenseModel
@@ -68,7 +68,7 @@ class IncomeModel{
       other.title == title &&
       other.remained == remained &&
       other.user == user &&
-      other.createdAt == createdAt;
+      other.created == created;
   }
 
   @override
@@ -78,11 +78,11 @@ class IncomeModel{
       title.hashCode ^
       remained.hashCode ^
       user.hashCode ^
-      createdAt.hashCode;
+      created.hashCode;
   }
 
   @override
   String toString() {
-    return 'IncomeModel(id: $id, value: $value, title: $title, remained: $remained, createdAt: $createdAt)';
+    return 'IncomeModel(id: $id, value: $value, title: $title, remained: $remained, createdAt: $created)';
   }
 }

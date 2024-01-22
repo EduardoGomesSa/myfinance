@@ -1,43 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:myfinance/app/core/config/app_colors.dart';
+import 'package:myfinance/app/core/widgets/expense_widget.dart';
+import 'package:myfinance/app/models/expense_model.dart';
 import 'package:myfinance/app/models/income_model.dart';
-
 import '../bill/bill_form_page.dart';
 
-class IncomeInfoPage extends StatelessWidget{
+class IncomeInfoPage extends StatelessWidget {
   const IncomeInfoPage({Key? key, required this.income}) : super(key: key);
 
   final IncomeModel income;
 
-  //final _formKey = GlobalKey<FormState>();
-
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
       appBar: AppBar(),
       backgroundColor: AppColors.background,
-      body: SingleChildScrollView(
-        child: SizedBox(
-          height: size.height,
-          width: size.width,
-          child: Column(
-           children: [
-            Text(
-              "${income.title}",
-              style: const TextStyle(
-                fontSize: 24, color: AppColors.primaryText
-              ),
-            ),
+      body: ListView(
+        children: [
+          SizedBox(
+            height: size.height,
+            width: size.width,
+            child: Column(
+              children: [
+                Text(
+                  "${income.created}",
+                    style: const TextStyle(
+                    fontSize: 16,
+                    color: AppColors.primaryText
+                    ),
+                ),
+                Text(
+                  "${income.title}",
+                  style: const TextStyle(
+                    fontSize: 24, color: AppColors.primaryText
+                  ),
+                ),
+                const SizedBox(height: 30),
 
-            const SizedBox(height: 30),
-
-            Container(
-              width: 130,
-              height: 80,
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              decoration: BoxDecoration(
+                Container(
+                width: 130,
+                height: 80,
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                decoration: BoxDecoration(
                 color: AppColors.backgroundComponent,
                 borderRadius: BorderRadius.circular(12) 
               ),
@@ -69,7 +75,7 @@ class IncomeInfoPage extends StatelessWidget{
                         )
                       ]
                     ),
-                    const Row(
+                  const Row(
                     //crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -127,10 +133,24 @@ class IncomeInfoPage extends StatelessWidget{
                   ),
                 ),
               ],
-            )
-           ], 
-          )
-        )
+            ),
+                // ... restante do seu código ...
+                ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: income.expenses?.length ?? 0,
+                  itemBuilder: (BuildContext context, int index) {
+                    ExpenseModel? model = income.expenses?[index];
+
+                    return model != null
+                        ? ExpenseWidget(model: model)
+                        : Container(); // Retorna um Container vazio se o modelo for nulo.
+                  },
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
