@@ -30,7 +30,7 @@ class HomePage extends StatelessWidget {
             } else {
               List<IncomeModel> sortedList =
                   List.from(controller.listIncome);
-              sortedList.sort((a, b) => a.created!.compareTo(b.created!));
+              sortedList.sort((b, a) => a.created!.compareTo(b.created!));
 
               List<Widget> widgets = [];
 
