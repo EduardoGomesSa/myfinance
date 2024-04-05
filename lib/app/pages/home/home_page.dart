@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:myfinance/app/controllers/income_controller.dart';
+import 'package:myfinance/app/core/config/app_colors.dart';
 import 'package:myfinance/app/core/widgets/income_widget.dart';
 import 'package:myfinance/app/models/income_model.dart';
 
@@ -14,8 +15,10 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background,
       appBar: AppBar(
         title: const Text('Home Page'),
+        backgroundColor: AppColors.backgroundComponent,
       ),
       body: RefreshIndicator(
         key: _refreshIndicatorKey,
@@ -28,8 +31,7 @@ class HomePage extends StatelessWidget {
             if (controller.isLoading.value == true) {
               return const Center(child: CircularProgressIndicator());
             } else {
-              List<IncomeModel> sortedList =
-                  List.from(controller.listIncome);
+              List<IncomeModel> sortedList = List.from(controller.listIncome);
               sortedList.sort((b, a) => a.created!.compareTo(b.created!));
 
               List<Widget> widgets = [];
@@ -51,24 +53,17 @@ class HomePage extends StatelessWidget {
                   // Adiciona a linha com o mês e ano
                   widgets.add(
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.only(bottom: 10, top: 15),
                       child: Row(
                         children: [
                           Expanded(
-                            child: Container(
-                              height: 1,
-                              decoration: const BoxDecoration(
-                                border: Border(
-                                  bottom: BorderSide(
-                                    color: Colors.black, // Cor da linha
-                                    width: 2, // Largura da linha
-                                  ),
-                                ),
-                              ),
+                            child: Divider(
+                              color: Colors.grey.withAlpha(200),
+                              thickness: 2,
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                            padding: const EdgeInsets.symmetric(horizontal: 15),
                             child: Text(
                               currentMonthAndYear,
                               style: const TextStyle(
@@ -78,18 +73,10 @@ class HomePage extends StatelessWidget {
                             ),
                           ),
                           Expanded(
-                            child: Container(
-                              height: 1,
-                              decoration: const BoxDecoration(
-                                border: Border(
-                                  bottom: BorderSide(
-                                    color: Colors.black, // Cor da linha
-                                    width: 2, // Largura da linha
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
+                              child: Divider(
+                            color: Colors.grey.withAlpha(200),
+                            thickness: 2,
+                          ))
                         ],
                       ),
                     ),

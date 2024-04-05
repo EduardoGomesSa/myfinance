@@ -22,9 +22,7 @@ class IncomeWidget extends StatelessWidget{
           )
         );
       },
-
-      child: Card(
-        child: Container(
+      child: Container(
           margin: const EdgeInsets.only(left: 20, right: 20, top: 10),
           child: Container(
             decoration: BoxDecoration(
@@ -42,7 +40,7 @@ class IncomeWidget extends StatelessWidget{
                     style: const TextStyle(
                       fontSize: 14, color: AppColors.primaryText
                     ),
-                  ),
+                  ),  
 
                   const SizedBox(height: 4),
                   Text(
@@ -56,15 +54,14 @@ class IncomeWidget extends StatelessWidget{
                   Text(
                     "${model.remained}",
                     style: const TextStyle(
-                      fontSize: 10, color: AppColors.secundaryText
+                    fontSize: 10, color: AppColors.secundaryText
                     )
                   )
                 ],
               ),
             ),
           ),
-        )
-      ),
-    );
+        )        
+      );
   }
 }

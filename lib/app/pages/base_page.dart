@@ -37,7 +37,7 @@ class _BasePageState extends State<BasePage>{
             });
           },
           type: BottomNavigationBarType.fixed,
-          backgroundColor: AppColors.background,
+          backgroundColor: AppColors.backgroundComponent,
           selectedItemColor: AppColors.primaryText,
           unselectedItemColor: AppColors.secundaryText,
           items: const [
