@@ -20,78 +20,80 @@ class IncomeFormPage extends StatelessWidget{
 
     return Scaffold(
       backgroundColor: AppColors.background,
-      body: SingleChildScrollView(
-        child: SizedBox(
-          height: size.height,
-          width: size.width,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(29.0),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      TextFieldWidget(
-                        controller: incomeTitleTextController,
-                        icon: Icons.title, 
-                        label: "Título",
-                        onSaved: (value){
-                          controller.income.title = value;
-                        },),
+      appBar: AppBar(
+        title: const Text("Adicionar ganho"),
+        backgroundColor: AppColors.backgroundComponent,
+      ),
+      body: SizedBox(
+        height: size.height,
+        width: size.width,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(29.0),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    TextFieldWidget(
+                      controller: incomeTitleTextController,
+                      icon: Icons.title, 
+                      label: "Título",
+                      onSaved: (value){
+                        controller.income.title = value;
+                      },),
 
-                      TextFieldWidget(
-                        controller: incomeValueTextController,
-                        icon: Icons.money, 
-                        label: "Ganho",
-                        onSaved: (value){
-                          int newValue = int.parse(value!); 
-                          controller.income.value = newValue;
-                        },),
+                    TextFieldWidget(
+                      controller: incomeValueTextController,
+                      icon: Icons.money, 
+                      label: "Ganho",
+                      onSaved: (value){
+                        int newValue = int.parse(value!); 
+                        controller.income.value = newValue;
+                      },),
 
-                      const SizedBox(
-                        height: 10,
-                      ),
+                    const SizedBox(
+                      height: 10,
+                    ),
 
-                      SizedBox(
-                        height: 50,
-                        child: GetX<IncomeController>(builder: (controller){
-                          return ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: AppColors.primary,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(9),
-                              ),
+                    SizedBox(
+                      height: 50,
+                      child: GetX<IncomeController>(builder: (controller){
+                        return ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: AppColors.primary,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(9),
                             ),
-                            onPressed: controller.isLoading.value == true
-                              ? null 
-                              :() {
-                                FocusScope.of(context).unfocus();
+                          ),
+                          onPressed: controller.isLoading.value == true
+                            ? null 
+                            :() {
+                              FocusScope.of(context).unfocus();
 
-                                if(_formKey.currentState!.validate()){
-                                  _formKey.currentState!.save();
+                              if(_formKey.currentState!.validate()){
+                                _formKey.currentState!.save();
 
-                                  controller.post();
-                                }
-                              }, 
-                            child: controller.isLoading.value == true
-                              ? const CircularProgressIndicator(
-                                backgroundColor: Colors.white)
-                              : const Text(
-                                'Cadastrar',
-                                style: TextStyle(fontSize: 16),
-                              ),
-                          );
-                        }),
-                      ),
-                    ],
-                  )
-                ),
+                                controller.post();
+                              }
+                            }, 
+                          child: controller.isLoading.value == true
+                            ? const CircularProgressIndicator(
+                              backgroundColor: Colors.white)
+                            : const Text(
+                              'Cadastrar',
+                              style: TextStyle(fontSize: 16),
+                            ),
+                        );
+                      }),
+                    ),
+                  ],
+                )
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
