@@ -15,7 +15,10 @@ class IncomeInfoPage extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("Informações do ganho"),
+        backgroundColor: AppColors.backgroundComponent,
+      ),
       backgroundColor: AppColors.background,
       body: ListView(
         children: [
