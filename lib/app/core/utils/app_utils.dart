@@ -29,7 +29,7 @@ class AppUtils {
   String formatDateTime(DateTime dateTime) {
     initializeDateFormatting();
 
-    DateFormat dateFormat = DateFormat.yMd('pt_BR').add_Hm();
+    DateFormat dateFormat = DateFormat.yMMM('pt_BR');
     return dateFormat.format(dateTime);
   }
 

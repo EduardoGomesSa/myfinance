@@ -3,6 +3,7 @@ import 'package:myfinance/app/bindings/app_binding.dart';
 import 'package:myfinance/app/bindings/bill_binding.dart';
 import 'package:myfinance/app/bindings/expense_binding.dart';
 import 'package:myfinance/app/bindings/income_binding.dart';
+import 'package:myfinance/app/core/utils/app_utils.dart';
 import 'package:myfinance/app/pages/auth/login_page.dart';
 import 'package:myfinance/app/pages/home/home_page.dart';
 import 'package:myfinance/app/pages/income/income_form_page.dart';
@@ -26,11 +27,14 @@ abstract class AppPages{
     ),
     GetPage(
       name: AppRoutes.home, 
-      page: () => HomePage(),
+      page: () => HomePage(appUtils: AppUtils(),),
+      bindings: [
+        AppBinding(),
+      ]
     ),
     GetPage(
       name: AppRoutes.splash, 
-      page: () => const SplashPage()
+      page: () => const SplashPage(),
     ),
     GetPage(
       name: AppRoutes.profile, 

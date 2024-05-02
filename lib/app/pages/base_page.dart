@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myfinance/app/core/config/app_colors.dart';
+import 'package:myfinance/app/core/utils/app_utils.dart';
 import 'package:myfinance/app/pages/home/home_page.dart';
 import 'package:myfinance/app/pages/income/income_form_page.dart';
 import 'package:myfinance/app/pages/profile/profile_page.dart';
@@ -23,7 +24,7 @@ class _BasePageState extends State<BasePage>{
           physics: const NeverScrollableScrollPhysics(),
           controller: pageController,
           children: [
-            HomePage(),
+            HomePage(appUtils: AppUtils(),),
             IncomeFormPage(),
             const ProfilePage(),
           ],

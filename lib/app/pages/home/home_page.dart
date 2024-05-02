@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:myfinance/app/controllers/income_controller.dart';
 import 'package:myfinance/app/core/config/app_colors.dart';
+import 'package:myfinance/app/core/utils/app_utils.dart';
 import 'package:myfinance/app/core/widgets/income_widget.dart';
 import 'package:myfinance/app/models/income_model.dart';
 
 class HomePage extends StatelessWidget {
-  HomePage({super.key});
+  HomePage({super.key, required this.appUtils});
 
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
       GlobalKey<RefreshIndicatorState>();
   final IncomeController controller = Get.find();
+  final AppUtils appUtils;
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +67,7 @@ class HomePage extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 15),
                             child: Text(
-                              currentMonthAndYear,
+                              appUtils.formatDateTime(model.created!),
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18,
