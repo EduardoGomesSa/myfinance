@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myfinance/app/core/config/app_colors.dart';
+import 'package:myfinance/app/core/utils/app_utils.dart';
 import 'package:myfinance/app/models/income_model.dart';
 import 'package:myfinance/app/pages/income/income_info_page.dart';
 
@@ -18,7 +19,7 @@ class IncomeWidget extends StatelessWidget{
         Navigator.push(
           context, 
           MaterialPageRoute(
-            builder: (context) => IncomeInfoPage(income: model)
+            builder: (context) => IncomeInfoPage(income: model, appUtils: AppUtils(),)
           )
         );
       },

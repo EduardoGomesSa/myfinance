@@ -11,9 +11,7 @@ class ProfilePage extends StatelessWidget{
         title: const Text("Usuário"),
         backgroundColor: AppColors.backgroundComponent,
       ),
-      body: Container(
-        child: Text("profile Page"),
-      ),
+      body: const Text("profile Page"),
     );
   }
 }

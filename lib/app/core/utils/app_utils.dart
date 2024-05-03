@@ -26,10 +26,17 @@ class AppUtils {
     return numberFormat.format(price);
   }
 
-  String formatDateTime(DateTime dateTime) {
+  String formatDateTimeHome(DateTime dateTime) {
     initializeDateFormatting();
 
     DateFormat dateFormat = DateFormat.yMMM('pt_BR');
+    return dateFormat.format(dateTime);
+  }
+
+  String formatDateTime(DateTime dateTime) {
+    initializeDateFormatting();
+
+    DateFormat dateFormat = DateFormat.yMd('pt_BR');
     return dateFormat.format(dateTime);
   }
 

@@ -67,7 +67,7 @@ class HomePage extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 15),
                             child: Text(
-                              appUtils.formatDateTime(model.created!),
+                              appUtils.formatDateTimeHome(model.created!),
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18,
