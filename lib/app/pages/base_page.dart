@@ -12,20 +12,22 @@ class BasePage extends StatefulWidget {
   State<BasePage> createState() => _BasePageState();
 }
 
-class _BasePageState extends State<BasePage>{
+class _BasePageState extends State<BasePage> {
   int currentIndex = 0;
   final pageController = PageController();
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: PageView(
           physics: const NeverScrollableScrollPhysics(),
           controller: pageController,
           children: [
-            HomePage(appUtils: AppUtils(),),
-            IncomeFormPage(),
+            HomePage(
+              appUtils: AppUtils(),
+            ),
+            //IncomeFormPage(),
             const ProfilePage(),
           ],
         ),
@@ -44,16 +46,20 @@ class _BasePageState extends State<BasePage>{
           items: const [
             BottomNavigationBarItem(
               icon: Icon(Icons.home_outlined),
-              label: "Home"),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.add_card_outlined),
-              label: "Add Income"),
+              label: "Home",
+            ),
+            // BottomNavigationBarItem(
+            //   icon: Icon(Icons.add_card_outlined),
+            //   label: "Add Income",
+            // ),
             BottomNavigationBarItem(
               icon: Icon(Icons.people_alt_outlined),
-              label: "Profile"),
+              label: "Profile",
+            ),
           ],
         ),
-      )
+        
+      ),
     );
   }
 }

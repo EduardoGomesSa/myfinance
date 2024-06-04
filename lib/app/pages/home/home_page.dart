@@ -5,6 +5,7 @@ import 'package:myfinance/app/core/config/app_colors.dart';
 import 'package:myfinance/app/core/utils/app_utils.dart';
 import 'package:myfinance/app/core/widgets/income_widget.dart';
 import 'package:myfinance/app/models/income_model.dart';
+import 'package:myfinance/app/pages/income/income_form_page.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key, required this.appUtils});
@@ -100,6 +101,18 @@ class HomePage extends StatelessWidget {
           },
         ),
       ),
+
+      floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            showBottomSheet(
+                context: context,
+                builder: (_) {
+                  return IncomeFormPage();
+                });
+          },
+          child: const Icon(Icons.add),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
